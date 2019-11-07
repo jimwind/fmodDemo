@@ -24,26 +24,44 @@ set_target_properties( fmodL
         ${distribution_DIR}/${ANDROID_ABI}/libfmodL.so )
 
 
-# effects.cpp play_sound.cpp convolution_reverb.cpp 每个文件代表一种模式，主方法名都是FMOD_Main，由common_platform.cpp的main调用
-add_library( effect #偷懒了，不想重新取名了，否则在java代码中System.loadLibrary也要同步改名
-        SHARED
-        convolution_reverb.cpp
-        common.cpp
-        common_platform.cpp
-        )
+#---------------------------------------------------------------
+#       变声[萝莉][大叔][搞怪][惊悚][空灵]
+#---------------------------------------------------------------
 find_library( # Sets the name of the path variable.
         log-lib
+        # Specifies the name of the NDK library that
+        # you want CMake to locate.
         log)
-target_link_libraries( effect #偷懒了，不想重新取名了，否则在java代码中System.loadLibrary也要同步改名
+add_library( effect
+        SHARED
+        effect.cpp)
+
+target_link_libraries( effect
         fmod
         fmodL
         ${log-lib} )
 #---------------------------------------------------------------
+
+# effects.cpp play_sound.cpp convolution_reverb.cpp 每个文件代表一种模式，主方法名都是FMOD_Main，由common_platform.cpp的main调用
+#add_library( effect #偷懒了，不想重新取名了，否则在java代码中System.loadLibrary也要同步改名
+#        SHARED
+#        fmod/convolution_reverb.cpp
+#        fmod/common.cpp
+#        fmod/common_platform.cpp
+#        )
+#find_library( # Sets the name of the path variable.
+#        log-lib
+#        log)
+#target_link_libraries( effect #偷懒了，不想重新取名了，否则在java代码中System.loadLibrary也要同步改名
+#        fmod
+#        fmodL
+#        ${log-lib} )
+#---------------------------------------------------------------
 #add_library( effect
 #        SHARED
-#        effects.cpp
-#        common.cpp
-#        common_platform.cpp
+#        fmod/effects.cpp
+#        fmod/common.cpp
+#        fmod/common_platform.cpp
 #        )
 #find_library( # Sets the name of the path variable.
 #        log-lib
@@ -55,9 +73,9 @@ target_link_libraries( effect #偷懒了，不想重新取名了，否则在java
 #---------------------------------------------------------------
 #add_library( sound
 #        SHARED
-#        play_sound.cpp
-#        common.cpp
-#        common_platform.cpp)
+#        fmod/play_sound.cpp
+#        fmod/common.cpp
+#        fmod/common_platform.cpp)
 #find_library( # Sets the name of the path variable.
 #        log-lib
 #        log)

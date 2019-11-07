@@ -34,7 +34,7 @@ http://creativecommons.org/licenses/by-sa/3.0/
 + DSP::addInput
 
 ==============================================================================*/
-#include "inc/fmod.hpp"
+#include "../inc/fmod.hpp"
 #include "common.h"
 
 int FMOD_Main()

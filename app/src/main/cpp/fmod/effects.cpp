@@ -8,7 +8,7 @@ would be filtered in the same way. To filter per channel, and not have other
 channels affected, simply apply the same functions to the FMOD::Channel instead
 of the FMOD::ChannelGroup.
 ==============================================================================*/
-#include "inc/fmod.hpp"
+#include "../inc/fmod.hpp"
 #include "common.h"
 
 int FMOD_Main()

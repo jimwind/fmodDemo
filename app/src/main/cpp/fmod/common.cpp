@@ -3,7 +3,7 @@ FMOD Example Framework
 Copyright (c), Firelight Technologies Pty, Ltd 2012-2019.
 ==============================================================================*/
 #include "common.h"
-#include "inc/fmod_errors.h"
+#include "../inc/fmod_errors.h"
 
 void (*Common_Private_Error)(FMOD_RESULT, const char *, int);
 
