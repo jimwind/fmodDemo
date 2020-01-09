@@ -30,7 +30,7 @@ JNIEXPORT void JNICALL Java_org_fmod_core_EffectUtils_effect
         LOGI("文件路径：%s", file_path);
         LOGI("j_mode: %d", j_mode);
         //加载录音文件到 sound
-        system->createSound(file_path, FMOD_DEFAULT,NULL, &sound);
+        system->createStream(file_path, FMOD_DEFAULT,NULL, &sound);
         //播放音频文件
         system->playSound(sound, 0, false, &channel);
         //播放过程中实现不同的音效配置
@@ -40,7 +40,7 @@ JNIEXPORT void JNICALL Java_org_fmod_core_EffectUtils_effect
                 LOGI("%s", "正常播放");
                 break;
             case org_fmod_core_EffectUtils_MODE_LUOLI:
-                //女声为高声，需要将声音提高
+                //女声为高音，需要将声调提高(0.5 to 2.0)
                 //DSP 中定义了一些对声音处理的特效，
                 system->createDSPByType(FMOD_DSP_TYPE_PITCHSHIFT, &dsp);
                 dsp->setParameterFloat(FMOD_DSP_PITCHSHIFT_PITCH, 2.5);
@@ -49,7 +49,7 @@ JNIEXPORT void JNICALL Java_org_fmod_core_EffectUtils_effect
                 LOGI("%s", "萝莉")
                 break;
             case org_fmod_core_EffectUtils_MODE_DASHU:
-                //女声为高声，需要将声音提高
+                //男声为低音，需要将声调降低 (0.5 to 2.0)
                 //DSP 中定义了一些对声音处理的特效，
                 system->createDSPByType(FMOD_DSP_TYPE_PITCHSHIFT, &dsp);
                 dsp->setParameterFloat(FMOD_DSP_PITCHSHIFT_PITCH, 0.6);

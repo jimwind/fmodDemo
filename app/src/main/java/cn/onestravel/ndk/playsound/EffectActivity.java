@@ -12,6 +12,9 @@ import org.fmod.core.EffectUtils;
 
 import java.io.File;
 
+/**
+ * 仿QQ变声
+ */
 public class EffectActivity extends Activity {
     private EffectUtils effectUtils;
     private boolean permission = false;
